@@ -21,7 +21,7 @@ export const  DishContextProvider=({children})=>{
 
   const totalCount = Object.values(counts).reduce((sum, val) => sum + val, 0);
   return (
-    <DishContext.Provider value={{counts,handleIncrement,handleDecrement,totalCount}} >
+    <DishContext.Provider value={{counts,setCounts,handleIncrement,handleDecrement,totalCount}} >
         {children}
     </DishContext.Provider>
   )

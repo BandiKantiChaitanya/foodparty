@@ -3,7 +3,7 @@
 A dynamic and responsive food menu application built with React. This app allows users to browse dishes categorized by meal type, filter by veg/non-veg, view detailed ingredients, and manage selections using intuitive controls.
 
 
-## [**Live Demo**]()
+## [**Live Demo**](https://foodparty.vercel.app/)
 
 
 
@@ -31,7 +31,7 @@ A dynamic and responsive food menu application built with React. This app allows
 ## How to Download and Run the Project
 Clone the repository from GitHub:
 
-git clone https://github.com/BandiKantiChaitanya/data-dashboard.git
+git clone https://github.com/BandiKantiChaitanya/foodparty
 
 cd client
 

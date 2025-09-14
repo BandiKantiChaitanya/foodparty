@@ -7,7 +7,7 @@ import { DiStackoverflow } from 'react-icons/di';
 
 const DishModal = ({ dish, show, onClose }) => {
   // Prevent body scrolling when modal is open
-  const { counts, handleIncrement, handleDecrement, totalCount } = useDishContext();
+  const { counts, setCounts, handleIncrement, handleDecrement, totalCount } = useDishContext();
   const navigate=useNavigate()
   useEffect(() => {
     if (show) document.body.style.overflow = 'hidden';

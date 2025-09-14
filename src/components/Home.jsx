@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import {  useDishContext } from '../context/dishContext';
 import DishModal from './DishModal';
 import { DiStackoverflow } from "react-icons/di";
+import OrderSummaryModal from './OrderSummaryModal';
 
 function Home() {
   // console.log('Om Namah Shivaya')
@@ -33,11 +34,12 @@ const [showNonVeg, setShowNonVeg] = useState(false);
 });
 
 
-  const { counts, handleIncrement, handleDecrement, totalCount } = useDishContext();
+  const { counts,setCounts, handleIncrement, handleDecrement, totalCount } = useDishContext();
   
 
   const [showModal, setShowModal] = useState(false);
 const [selectedDish, setSelectedDish] = useState(null);
+const [showSummaryModal, setShowSummaryModal] = useState(false);
 
 const openModal = (dish) => {
   setSelectedDish(dish);
@@ -54,6 +56,25 @@ const closeModal = () => {
 }, 0);
 
 const navigate=useNavigate()
+
+const selectedDishes = filterDish
+  .filter(dish => counts[dish.id] > 0)
+  .map(dish => ({
+    ...dish,
+    count: counts[dish.id],
+    price: parseFloat(dish.price)
+  }));
+
+  const handleConfirmOrder = () => {
+  alert("🎉 Thank you for shopping with us!");
+  setShowSummaryModal(false);
+
+  // Reset all counts to 0
+//   Object.keys(counts).forEach((id) => handleDecrement(Number(id)));
+setCounts({})
+
+};
+
 
   return (
     <div>
@@ -105,7 +126,7 @@ const navigate=useNavigate()
         ):(
         filterDish?.map((dish,i)=>(
           <div className="card mb-4" key={i} onClick={() => openModal(dish)} style={{cursor:'pointer'}}>
-            <div className="card-body d-flex justify-content-between">
+            <div className="card-body d-flex justify-content-between ">
               <div className='main-content' >
                 <div className="dish-header d-flex align-items-center gap-2">
                   <h5 className="mb-0">{dish.name}</h5>
@@ -138,11 +159,16 @@ const navigate=useNavigate()
     <div className="bottom-bar-container shadow">
         <div className="bar-content  d-flex flex-column justify-content-between align-items-center  ">
         <span className="dish-info fs-5">Total Dish Selected <strong>{totalCount}</strong> </span>
-        <button className="btn btn-dark w-75" >Continue</button>
+        <button className="btn btn-dark w-75" onClick={() => setShowSummaryModal(true)} >Continue</button>
         </div>
     </div>
     )}
-      
+      <OrderSummaryModal
+  show={showSummaryModal}
+  onClose={() => setShowSummaryModal(false)}
+  onConfirm={handleConfirmOrder}
+  selectedDishes={selectedDishes}
+/>
       <DishModal show={showModal} dish={selectedDish} onClose={closeModal} />
     </div>
   )

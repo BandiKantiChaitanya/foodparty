@@ -335,4 +335,20 @@ body.modal-open {
 }
 
 
+.footer {
+  background-color: #f8f9fa;
+  text-align: center;
+  padding: 20px 10px;
+  font-size: 14px;
+  color: #555;
+  margin-top: 40px;
+  border-top: 1px solid #e0e0e0;
+}
+
+@media (max-width: 576px) {
+  .footer {
+    font-size: 13px;
+    padding: 16px 8px;
+  }
+}
 
