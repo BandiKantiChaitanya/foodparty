@@ -57,7 +57,7 @@ const closeModal = () => {
 
 const navigate=useNavigate()
 
-const selectedDishes = filterDish
+const selectedDishes = dishes
   .filter(dish => counts[dish.id] > 0)
   .map(dish => ({
     ...dish,
@@ -163,12 +163,7 @@ setCounts({})
         </div>
     </div>
     )}
-      <OrderSummaryModal
-  show={showSummaryModal}
-  onClose={() => setShowSummaryModal(false)}
-  onConfirm={handleConfirmOrder}
-  selectedDishes={selectedDishes}
-/>
+      <OrderSummaryModal show={showSummaryModal} onClose={() => setShowSummaryModal(false)} onConfirm={handleConfirmOrder} selectedDishes={selectedDishes} />
       <DishModal show={showModal} dish={selectedDish} onClose={closeModal} />
     </div>
   )
