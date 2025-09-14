@@ -1,0 +1,338 @@
+body.modal-open {
+  overflow: hidden;
+}
+.search{
+    border: 1px solid black;
+    margin-top: 20px;
+    margin:40px  120px;
+    padding: 10px;
+    border-radius: 20px;
+    margin-bottom: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.search input{
+    border: none;
+    outline: none;
+    background: none;
+    box-shadow: none;
+    padding: 8px;
+    font-size: 16px;
+    width: 90%;
+  /* color: #333; */
+}
+.search .search-icon{
+    font-size: 20px;
+}
+.filterBtn{
+    display: flex;
+    flex-direction: row;
+    margin: 40px 120px;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+.filterBtn button{
+    padding: 6px;
+    border-radius: 6px;
+    background-color: white;
+    border: 1px solid black;
+}
+.filterBtn button.active{
+    background-color: #FC8019;
+    color: white;
+}
+.card{
+    margin:0px  120px;
+    transition: all 0.3s ease;
+}
+.card:hover{
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+.card .image {
+  width: 300px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 8px;
+  position: relative;
+}
+
+.card .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* Ensures image fills area without distortion */
+  border-radius: 8px;
+  display: block;
+}
+
+.card .icon{
+    display: inline-block;
+    /* color: green; */
+    border: 1px solid;
+    border-radius: 4px;
+    font-size: 1.2rem;
+}
+.veg-dot{
+    color: #28a745;
+}
+.card .image{
+    position: relative;
+}
+.card .description {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  /* Fallback for non-webkit browsers */
+  line-clamp: 2;
+  box-orient: vertical;
+  max-height: 3.2em; /* Approx height for 2 lines */
+}
+
+
+.overlay-buttons {
+  position: absolute;
+  bottom: 8px; /* or top: 8px / center it if you want */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  padding: 8px 8px;
+  border-radius: 6px;
+  gap: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.overlay-buttons button {
+  background-color: white;
+  color:green;
+  border: none;
+  /* border-radius: 4px; */
+  width: 28px;
+  height: 28px;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.overlay-buttons span {
+  font-size: 18px;
+  font-weight: 500;
+  /* line-height: 1; */
+  display: inline-block;
+  vertical-align: middle;
+}
+.toggle-switches {
+  display: flex;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.switch-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  position: relative;
+  font-weight: 500;
+}
+
+.switch-label input {
+  display: none;
+}
+
+.icon-toggle {
+  width: 40px;
+  height: 10px;
+  background-color: #ccc;
+  border-radius: 20px;
+  position: relative;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+  padding: 0 2px;
+}
+
+.icon-toggle svg {
+  position: absolute;
+  transition: transform 0.3s;
+  font-size: 28px;
+  /* top: 1px; */
+  left: 2px;
+  color: white;
+}
+
+
+.icon-toggle.veg svg {
+  color: #28a745;
+  border: 1px solid #28a745;
+  border-radius: 4px;
+  font-size: 1.2rem;
+}
+
+
+.icon-toggle.non-veg svg {
+  color: red;
+  border: 1px solid red;
+  border-radius: 4px;
+  font-size: 1.2rem;
+}
+
+.icon-toggle.checked svg {
+  transform: translateX(20px);
+}
+
+
+.icon-toggle.checked.veg {
+  background-color: #c7f7c7;
+}
+
+.icon-toggle.checked.non-veg {
+  background-color: #fdd7d7;
+}
+.title{
+    margin: 0px 120px;
+}
+.custom-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* dim effect */
+  z-index: 1040;
+}
+
+.custom-bottom-modal {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 600px;
+  height: 70vh;
+  background: white;
+  border-radius: 12px 12px 0 0 ;
+  z-index: 1050;
+  padding: 1rem;
+  box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.3);
+  overflow-y: auto;
+}
+
+.custom-bottom-modal::after {
+  content: '';
+  display: block;
+  height: 40px; /* adjust as needed */
+}
+/* Slide-in animation */
+.animate-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translate(-50%, 100%);
+  }
+  to {
+    transform: translate(-50%, 0%);
+  }
+}
+
+.bottom-bar-container {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30%;
+  background-color: aliceblue;
+  padding: 20px 0px;
+  border-top: 1px solid aliceblue;
+  z-index: 1050;
+  border-radius: 10px 10px 0 0; 
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1); 
+}
+
+.bar-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.dish-info {
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .bottom-bar-container {
+    width: 100%;
+    border-radius: 0;
+  }
+}
+.modal-body .dish-header .icon{
+    display: inline-block;
+    /* color: green; */
+    border: 1px solid;
+    border-radius: 4px;
+    font-size: 1.2rem;
+}
+.modal-dish-image {
+  width: 100%;
+  height: 180px;
+  object-fit:cover;
+  border-radius: 16px 16px 0 0;
+}
+
+.modal-body{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.modal-body .buttons button {
+  background-color: #f2f2f2;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.modal-body .overlay-buttons span {
+  min-width: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.ingredients-page{
+    margin: 20px 300px;
+}
+.ingredient-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ingredient-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  font-size: 15px;
+}
+
+.ingredient-name {
+  text-align: left;
+}
+
+.ingredient-quantity {
+  text-align: right;
+  white-space: nowrap; /* Keep "01 Pc" together */
+}
+
+
+
